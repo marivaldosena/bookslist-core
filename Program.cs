@@ -19,6 +19,10 @@ namespace BooksList
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((ctx, config) => {
+                    config.AddJsonFile("secrets.json", optional: false, reloadOnChange: false);
+                    config.AddCommandLine(args);
+                })
                 .UseStartup<Startup>();
     }
 }
