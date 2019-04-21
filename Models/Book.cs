@@ -17,6 +17,6 @@ namespace BooksList.Models
 
         public string ISBN { get; set; }
 
-        public int Author { get; set; }
+        public string Author { get; set; }
     }
 }
