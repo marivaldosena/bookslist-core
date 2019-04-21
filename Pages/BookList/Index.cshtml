@@ -28,6 +28,7 @@
             <th>
                 @Html.DisplayNameFor(m => m.Books.FirstOrDefault().ISBN)
             </th>
+            <th></th>
             <tbody>
                 @foreach(var item in Model.Books)
                 {
@@ -40,6 +41,10 @@
                         </td>
                         <td>
                             @Html.DisplayFor(m => item.ISBN)
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <a asp-route-id="@item.Id" asp-page="Edit" class="btn btn-success btn-sm">Edit</a>
                         </td>
                     </tr>
                 }
