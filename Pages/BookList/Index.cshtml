@@ -13,7 +13,7 @@
         <a asp-page="Create" class="btn btn-primary">Create New Book</a>
     </div>
 </div>
-
+<form method="POST">
 @if (Model.Books.Count() > 0)
 {
     <br><br>
@@ -43,7 +43,7 @@
                             @Html.DisplayFor(m => item.ISBN)
                         </td>
                         <td>
-                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <button asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</button>
                             <a asp-route-id="@item.Id" asp-page="Edit" class="btn btn-success btn-sm">Edit</a>
                         </td>
                     </tr>
@@ -56,3 +56,4 @@ else
 {
     <p>No Books Available.</p>
 }
+</form>
