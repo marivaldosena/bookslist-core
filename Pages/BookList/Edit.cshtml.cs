@@ -21,6 +21,9 @@ namespace BooksList.Pages.BookList
         [BindProperty]
         public Book Book { get; set; }
 
+        [TempData]
+        public string Message { get; set; }
+
         public async Task OnGet(int id)
         {
             Book = await _db.Book.FindAsync(id);
@@ -37,6 +40,8 @@ namespace BooksList.Pages.BookList
                 BookFromDb.Author = Book.Author;
 
                 await _db.SaveChangesAsync();
+
+                Message = "Book has been updated successfully.";
 
                 return RedirectToPage("Index");
             }

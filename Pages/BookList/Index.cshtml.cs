@@ -20,7 +20,10 @@ namespace BooksList.Pages.BookList
         }
 
         public IEnumerable<Book> Books { get; set; }
-        
+
+        [TempData]
+        public string Message { get; set; }
+
         public async Task OnGet()
         {
             Books = await _db.Book.ToListAsync();
@@ -37,6 +40,8 @@ namespace BooksList.Pages.BookList
             
             _db.Book.Remove(book);
             await _db.SaveChangesAsync();
+            
+            Message = "Book  deleted successfully.";
 
             return RedirectToPage("Index");
         }
